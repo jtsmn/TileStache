@@ -67,7 +67,7 @@ def getTile(layer, coord, extension, ignore_cached=False, suppress_cache_write=F
         This is the main entry point, after site configuration has been loaded
         and individual tiles need to be rendered.
     '''
-    status_code, headers, body = layer.getTileResponse(coord, extension, ignore_cached, suppress_cache_write)
+    status_code, headers, body = layer.getTileResponse(coord, extension, TRUE if query.get("ignore_cached") else False, suppress_cache_write)
     mime = headers.get('Content-Type')
 
     return mime, body
